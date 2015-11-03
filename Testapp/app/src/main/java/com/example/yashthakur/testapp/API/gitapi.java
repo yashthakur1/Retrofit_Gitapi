@@ -1,6 +1,6 @@
-package com.example.yashthakur.testapp.API;
+package com.example.yashthakur.testapp.api;
 
-import com.example.yashthakur.testapp.MODEL.gitmodel;
+import com.example.yashthakur.testapp.model.gitmodel;
 
 import retrofit.Callback;
 import retrofit.http.GET;

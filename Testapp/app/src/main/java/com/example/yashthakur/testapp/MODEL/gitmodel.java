@@ -1,4 +1,4 @@
-package com.example.yashthakur.testapp.MODEL;
+package com.example.yashthakur.testapp.model;
 
 
 import com.google.gson.annotations.Expose;

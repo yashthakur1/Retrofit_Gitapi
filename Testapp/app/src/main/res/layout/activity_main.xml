@@ -3,25 +3,18 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp" />
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:id="@+id/parent">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:id="@+id/editText"
         android:hint="enter username"
-        android:layout_below="@+id/progressBar"
+        android:layout_above="@+id/detailbtn"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginBottom="61dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -38,15 +31,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Retrofit Details"
-        android:id="@+id/tv"
+        android:id="@+id/textview"
         android:textSize="25dp"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:id="@+id/detailbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sugar"
+        android:id="@+id/sugarbtn"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
+        android:id="@+id/progressbar"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:indeterminate="false"
+        android:visibility="invisible"
+        android:progress="@android:integer/config_shortAnimTime"
+        android:max="@android:integer/config_longAnimTime" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="butter"
+        android:id="@+id/butterbtn"
+        android:layout_alignTop="@+id/sugarbtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
