@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.textview)
     TextView title;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,36 +61,27 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setupUI(findViewById(R.id.parent));
-        //  Typeface face = Typeface.createFromAsset(getAssets(), "font/Roboto-Black.ttf");
 
-        // linking ui elements with .java
 
+        //attaching view elements with .java
         username = (EditText) findViewById(R.id.editText);
         tv = (TextView) findViewById(R.id.tv);
         pbar = (ProgressBar) findViewById(R.id.progressbar);
-
         detailbtn = (Button) findViewById(R.id.detailbtn);
         sugar = (Button) findViewById(R.id.sugarbtn);
 
-        //tv.setTypeface(face);
         final Intent dintent = new Intent(context, Details.class);
-        final Book book = new Book("Title 1", "Edition 1");
-        book.save();
-       /* List<Book> list = Book.listAll(Book.class);
-        ArrayAdapter<Book> adapter = new ArrayAdapter<Book>(MainActivity.this, android.R.layout.simple_list_item_1, Integer.parseInt(list.toString()));
 
-        listView.setAdapter(adapter);*/
+
+
+
         sugar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                
 
-                //Book book=Book.findWithQuery(Book.class, "Select DISTINCT from Book Where id=?", "1");
-                // Book book = Book.findById(Book.class, 1L);
-                Log.d("book: ", "book string "+ book.title );//+ Book.findWithQuery(Book.class, "select * from Book where id = 1", "1").toString()
-                title.setText(book.toString());
-
-                pbar.setVisibility(View.INVISIBLE);// just to reset the pbar (remove this code later in final build)
-                Toast.makeText(getApplicationContext(), "Data stored", Toast.LENGTH_LONG).show();
+                pbar.setVisibility(View.INVISIBLE);// is just to reset the pbar ,remove this code later in final build.
+                Toast.makeText(getApplicationContext(), "data retrieved", Toast.LENGTH_LONG).show();
 
 
             }
@@ -100,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String user = username.getText().toString();
 
+
                 RestAdapter restadapter = new RestAdapter.Builder()
                         .setLogLevel(RestAdapter.LogLevel.FULL)
                         .setEndpoint(API).build();
@@ -109,8 +102,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void success(gitmodel gitmodel, Response response) {
                         Log.d("Response:" + response, "success");
-                        //tv.setText("done");
-                        dintent.putExtra("contentcall", "Github Name :" + gitmodel.getName().toString() + "\n" + "Repos:" + gitmodel.getPublicRepos().toString());
+                        Book book = new Book(gitmodel.getName().toString(), gitmodel.getPublicRepos().toString());
+                        book.save();
+                        dintent.putExtra("contentcall", "Github Name :" + book.title + "\n" + "Repos:" + book.edition);
+
 
                         pbar.setVisibility(View.VISIBLE);
                         MainActivity.this.startActivity(dintent);
@@ -121,9 +116,9 @@ public class MainActivity extends AppCompatActivity {
                     public void failure(RetrofitError error) {
                         //throws a toast message when retreiving fails
                         Toast.makeText(getApplicationContext(), "No internet connection", Toast.LENGTH_LONG).show();
-//                        tv.setText(error.getMessage());
+                        // tv.setText(error.getMessage());
                         title.setText(error.getMessage());
-//                        pbar.setVisibility(View.INVISIBLE);
+                        // pbar.setVisibility(View.INVISIBLE);
                         Log.d("error:" + error, "failure");
 
                     }
@@ -194,4 +189,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

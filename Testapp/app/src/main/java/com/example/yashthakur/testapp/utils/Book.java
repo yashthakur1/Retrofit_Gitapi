@@ -12,12 +12,7 @@ public class Book extends SugarRecord<Book>{
    public String title;
    public String edition;
     public Book()
-    {
-
-        Log.d("constructor is active","Constructor");
-
-
-    }
+    {}
 
 
     public Book(String title, String edition) {
@@ -29,7 +24,7 @@ public class Book extends SugarRecord<Book>{
 
     @Override
     public void save() {
-        super.save();
+       super.save();
 
         Log.v("Book","Save");
 

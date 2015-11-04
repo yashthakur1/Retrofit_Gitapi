@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -26,9 +27,8 @@ public class Details extends AppCompatActivity {
                         .build()
         );
         content = (TextView) findViewById(R.id.content);
-        Bundle data=getIntent().getExtras();
-        if(data !=null)
-        {
+        Bundle data = getIntent().getExtras();
+        if (data != null) {
             content.setText(data.getString("contentcall"));
         }
 
@@ -60,4 +60,6 @@ public class Details extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
